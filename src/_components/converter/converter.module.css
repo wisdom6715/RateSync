@@ -8,10 +8,6 @@
 .introContainer{
     width: 100%;
 }
-.selectCurrency{
-    width: 45%;
-    height: 2rem;
-}
 .selectContainer{
     margin-top: 3rem;
     display: flex;
