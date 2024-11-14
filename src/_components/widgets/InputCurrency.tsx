@@ -1,7 +1,10 @@
-import React, { useState } from "react"
+interface InputAmount{
+  setAmount: React.Dispatch<React.SetStateAction<string>>;
+  amount: string;
+}
 
-const InputCurrency: React.FC = () => {
-  const [amount, setAmount] = useState<string>()
+const InputCurrency: React.FC<InputAmount> = ({setAmount, amount}) => {
+  
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAmount(e.target.value)
     console.log('Amount:', amount)
