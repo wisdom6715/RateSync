@@ -11,10 +11,12 @@ const Converter = () => {
   const [convertedAmount, setConvertedAmount] = useState<number>(100)
   useEffect(()=>{
     const fetchConvertCurrency = async(convertCurrency: string, selectedCurrency:string, amount: string)=>{
-        const response = await fetch(`https://api.frankfurter.app/latest?base=${selectedCurrency}&symbols=${convertCurrency}`);
-        const data = await response.json();
-        const convertedAmount = (parseFloat(amount) * data.rates[convertCurrency]).toFixed(2);
-        setConvertedAmount(parseFloat(convertedAmount));
+        if(convertCurrency != selectedCurrency){
+          const response = await fetch(`https://api.frankfurter.app/latest?base=${selectedCurrency}&symbols=${convertCurrency}`);
+          const data = await response.json();
+          const convertedAmount = (parseFloat(amount) * data.rates[convertCurrency]).toFixed(2);
+          setConvertedAmount(parseFloat(convertedAmount));
+        }
     }
     if (convertCurrency || selectedCurrency || amount) {
       fetchConvertCurrency(convertCurrency, selectedCurrency, amount);
