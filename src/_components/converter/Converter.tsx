@@ -5,18 +5,18 @@ import CurrentCurrency from '../widgets/CurrentCurrency'
 import { useEffect, useState } from 'react'
 
 const Converter = () => {
-  const [convertCurrency, setConvertCurrency] = useState<string>('From')
-  const [selectedCurrency, setSelectedCurrency] = useState<string>('To')
+  const [convertCurrency, setConvertCurrency] = useState<string>('EUR')
+  const [selectedCurrency, setSelectedCurrency] = useState<string>('USD')
   const [amount, setAmount] = useState<string>('')
-  const [convertedAmount, setConvertedAmount] = useState<number>()
+  const [convertedAmount, setConvertedAmount] = useState<number>(100)
   useEffect(()=>{
     const fetchConvertCurrency = async(convertCurrency: string, selectedCurrency:string, amount: string)=>{
         const response = await fetch(`https://api.frankfurter.app/latest?base=${selectedCurrency}&symbols=${convertCurrency}`);
         const data = await response.json();
-        const convertedAmount = (parseInt(amount) * data.rates[convertCurrency]).toFixed(2);
-        setConvertedAmount(Math.floor(parseInt(convertedAmount)));
+        const convertedAmount = (parseFloat(amount) * data.rates[convertCurrency]).toFixed(2);
+        setConvertedAmount(parseFloat(convertedAmount));
     }
-    if (convertCurrency && selectedCurrency && amount) {
+    if (convertCurrency || selectedCurrency || amount) {
       fetchConvertCurrency(convertCurrency, selectedCurrency, amount);
     }
   }, [convertCurrency, selectedCurrency, amount])
@@ -34,7 +34,7 @@ const Converter = () => {
       <div  style={{marginTop: 40, display: 'flex', alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between'}}>
         <InputCurrency setAmount={setAmount} amount={amount}/>
         <div className={style.convertedAmount}>
-          {convertedAmount}
+          {convertedAmount? convertedAmount : '0.00'}
         </div>
       </div>
     </div>

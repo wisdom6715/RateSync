@@ -20,11 +20,16 @@ const SelectCurrency: React.FC<FromCurrencyProps> = ({ selectedCurrency, setSele
         onChange={handleSelection}
         value={selectedCurrency}
       >
-        <option value="select">Select Currency</option>
         <option value="USD">USD</option>
         <option value="EUR">EUR</option>
         <option value="JPY">JPY</option>
+        <option value="CAD">CAD</option>
         <option value="GBP">GBP</option>
+        <option value="AUD">AUD</option>
+        <option value="CNY">AUD</option>
+        <option value="CHF">AUD</option>
+        <option value="SEK">AUD</option>
+        <option value="NOK">AUD</option>
       </select>
     </>
   );
