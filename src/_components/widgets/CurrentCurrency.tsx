@@ -1,17 +1,11 @@
-import React from 'react';
-
-interface FromCurrencyProps {
-  setSelectedCurrency: React.Dispatch<React.SetStateAction<string>>;
-  selectedCurrency: string;
-}
-
-const SelectCurrency: React.FC<FromCurrencyProps> = ({ selectedCurrency, setSelectedCurrency }) => {
-  const handleSelection = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedCurrency(e.target.value);
-    console.log('Selected Currency:', selectedCurrency);
-  };
-
-  return (
+import React, { useState } from 'react'
+const SelectCurrency: React.FC = () => {
+    const [selectedCurrency, setSelectedCurrency] = useState<string>('select')
+    const handleSelection = (e: React.ChangeEvent<HTMLSelectElement>) =>{
+        setSelectedCurrency(e.target.value)
+        console.log('Selected Currency:', selectedCurrency)
+    }
+    return (
     <>
       <select
         name="Currency"
@@ -32,7 +26,6 @@ const SelectCurrency: React.FC<FromCurrencyProps> = ({ selectedCurrency, setSele
         <option value="NOK">AUD</option>
       </select>
     </>
-  );
-};
-
-export default SelectCurrency;
+  )
+}
+export default SelectCurrency

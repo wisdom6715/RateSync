@@ -1,9 +1,6 @@
-interface ToConvert{
-    setConvertCurrency: React.Dispatch<React.SetStateAction<string>>;
-    convertCurrency: string;
-}
-const SelectCurrency: React.FC<ToConvert> = ({setConvertCurrency, convertCurrency}) => {
-    
+import React, { useState } from 'react'
+const SelectCurrency: React.FC = () => {
+    const [convertCurrency, setConvertCurrency] = useState<string>('select')
     const handleSelection = (e: React.ChangeEvent<HTMLSelectElement>) =>{
         setConvertCurrency(e.target.value)
         console.log('Selected Currency:', convertCurrency)
