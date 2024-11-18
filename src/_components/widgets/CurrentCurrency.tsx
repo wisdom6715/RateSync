@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
-const SelectCurrency: React.FC = () => {
-    const [selectedCurrency, setSelectedCurrency] = useState<string>('select')
+interface ToConvert{
+   setSelectedCurrency: React.Dispatch<React.SetStateAction<string>>;
+   selectedCurrency: string;
+}
+const SelectCurrency: React.FC<ToConvert> = ({setSelectedCurrency, selectedCurrency}) => {
     const handleSelection = (e: React.ChangeEvent<HTMLSelectElement>) =>{
         setSelectedCurrency(e.target.value)
         console.log('Selected Currency:', selectedCurrency)

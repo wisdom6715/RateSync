@@ -1,7 +1,9 @@
-import React, { useState } from "react"
+interface ToConvert{
+  setAmount: React.Dispatch<React.SetStateAction<string>>;
+  amount: string;
+}
+const InputCurrency: React.FC<ToConvert> = ({setAmount, amount}) => {
 
-const InputCurrency: React.FC = () => {
-  const [amount, setAmount] = useState<string>()
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAmount(e.target.value)
     console.log('Amount:', amount)
@@ -15,4 +17,4 @@ const InputCurrency: React.FC = () => {
   )
 }
 
-export default InputCurrency
+export default InputCurrency;
