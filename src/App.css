@@ -1,6 +1,11 @@
 body{
   margin: 0;
   padding: 0;
+  background-image: url('../src/assets/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 .generalContainer{
   padding: 0 20rem;

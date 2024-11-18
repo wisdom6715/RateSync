@@ -7,13 +7,13 @@ import { Chart as ChartJS, CategoryScale, LinearScale, LineElement, PointElement
 // Register necessary components for Line Chart
 ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement, Title, Tooltip, Legend);
 
-const LineChart = () => {
+const LineChart: React.FC = () => {
   const [currencyData, setCurrencyData] = useState<number[]>([]); // Array of numbers for USD to EUR rates
   const [dates, setDates] = useState<string[]>([]); // Array of strings for dates
 
   useEffect(() => {
     // Fetch data from the Frankfurter API
-    axios.get('https://api.frankfurter.app/2024-11-01..2024-11-15')
+    axios.get(`https://api.frankfurter.app/2024-11-01..?symbols=USD`)
       .then((response) => {
         const rates = response.data.rates; // Extract rates object from response
         const baseRate: number[] = []; // Array to store USD to EUR rates

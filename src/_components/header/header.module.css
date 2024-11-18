@@ -1,9 +1,20 @@
+.headerContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 4rem;
+}
 .header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     height: 4rem;
     align-items: center;
-    width: 100%;
-    border-bottom: .1rem solid grey;
+    width: 30%;
+    position: fixed;
+    left: 10; right: 10; top: 1rem;
+    background-color: white;
+    border-radius: 5rem;
+    padding-right: 1rem;
 }
